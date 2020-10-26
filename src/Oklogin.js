@@ -6,11 +6,10 @@ import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import Navbar from "./Navbar";
 class Oklogin extends Component {
-  // constructor에서 하는 일이 state 선언밖에 없다면, 제거하는게 좋아보임
   state = {
     caldata: [],
     username: [],
-    //  userdiv: [],
+    userdiv: [],
   };
 
   componentDidMount() {
@@ -21,10 +20,10 @@ class Oklogin extends Component {
     setTimeout(async () => {
       try {
         const calData = await Axios.post("http://172.22.200.49:3002/cal");
-        //const userName = JSON.parse(localStorage.getItem("userinfo"));
+        const userName = JSON.parse(localStorage.getItem("userinfo"));
         this.setState({ caldata: calData.data });
-        // this.setState({ userdiv: userName.userdivcode });
-
+        this.setState({ userdiv: userName.userdivcode });
+        console.log("aaa");
         console.log(this.state);
       } catch (error) {
         console.error(error);
@@ -39,10 +38,7 @@ class Oklogin extends Component {
       history.push("/");
     }
     const { caldata } = this.state;
-    /**
-     * 빼라 뒤지기싫으면
-     * caldata를 자식 컴포넌트에서 쓰고 싶으면 거기서 차라리 구조분해 할당해서 사용
-     */
+
     const filteredData = caldata.map(({ title, color, date, end }) => ({
       title,
       color,
