@@ -1,0 +1,232 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+div,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+#nav_bar {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 60px;
+  background-color: rgb(231, 231, 231);
+}
+
+#main_image {
+  padding: 0px;
+  margin: 0px;
+  width: 100%;
+  height: 400px;
+  background-image: url(/static/css/leserimg.png);
+}
+
+#icon {
+  margin: 20px 20px 20px 20px;
+  border-radius: 11px;
+  width: 64px;
+  height: 64px;
+  border-right: 3px solid;
+  border-bottom: 2px solid;
+  background-color: white;
+  float: left;
+  z-index: 10;
+}
+
+#category {
+  float: left;
+  padding: 0px;
+  margin-top: 150px;
+  width: 100%;
+  height: 250px;
+  background-color: rgb(58, 58, 58);
+  opacity: 0.3;
+  position: relative;
+}
+
+#main {
+  background-color: rgb(231, 231, 231);
+  padding: 100px 0px 0px 0px;
+  margin: 0px;
+  float: left;
+  width: 100%;
+  height: 1500px;
+}
+
+#calendar {
+  margin-left: 100px;
+  width: 1000px;
+  height: 370px;
+  background-color: white;
+  border-radius: 20px;
+  float: left;
+  border-bottom: 4px solid;
+  border-right: 3px solid;
+  border-color: rgb(165, 165, 165);
+}
+
+#todolist {
+  margin-left: 100px;
+  width: 1000px;
+  height: 370px;
+  background-color: white;
+  border-radius: 20px;
+  float: left;
+  border-bottom: 4px solid;
+  border-right: 3px solid;
+  border-color: rgb(165, 165, 165);
+}
+
+#border {
+  margin: 0px 200px 0px 100px;
+  width: 600px;
+  background-color: white;
+  height: 800px;
+
+  border-bottom: 4px solid;
+  border-right: 3px solid;
+  border-radius: 20px;
+  border-color: rgb(165, 165, 165);
+  float: left;
+}
+
+#main-left {
+  margin: 0px 0px 0px 0px;
+  width: 58%;
+  height: 1500px;
+  float: left;
+}
+
+#main-right {
+  margin: 0px 0px 0px 0px;
+
+  width: 42%;
+  height: 1500px;
+  float: right;
+}
+
+#in-category {
+  margin: 70px 0px 0px 600px;
+  z-index: 1;
+  opacity: 1;
+  position: relative;
+}
