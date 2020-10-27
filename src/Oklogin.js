@@ -16,27 +16,33 @@ class Oklogin extends Component {
     this.init();
   }
 
-  init = () => {
-    setTimeout(async () => {
-      try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal");
-        const userName = JSON.parse(localStorage.getItem("userinfo"));
-        this.setState({ caldata: calData.data });
-        this.setState({ userdiv: userName.userdivcode });
-        console.log("aaa");
-        console.log(this.state);
-      } catch (error) {
-        console.error(error);
-        this.setState({ caldata: [] });
+  init = async () => {
+    try {
+      // const calData = await Axios.post("http://172.22.200.49:3002/cal");
+      const logininfo = JSON.parse(localStorage.getItem("userinfo"));
+
+      if (!logininfo) {
+        alert("로그인정보없음");
+        return;
       }
-    }, 100);
+
+      console.log("logininfo start");
+      console.log(logininfo);
+
+      console.log("logininfo end");
+      //  this.setState({ caldata: calData.data });
+    } catch (error) {
+      console.error(error);
+      //  this.setState({ caldata: [] });
+    }
   };
 
   render() {
-    if (window.localStorage.length === 0) {
+    if (!window.localStorage.getItem("userinfo")) {
       const { history } = this.props;
       history.push("/");
     }
+
     const { caldata } = this.state;
 
     const filteredData = caldata.map(({ title, color, date, end }) => ({

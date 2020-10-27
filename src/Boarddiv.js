@@ -14,7 +14,7 @@ class BoardDiv extends React.Component {
     console.log(divcode);
     setTimeout(async () => {
       try {
-        const board = await Axios.post("http://172.22.200.49:3002/boarddiv", {
+        const board = await Axios.post("http://localhost:3002/boarddiv", {
           userdiv: divcode,
         });
         this.setState({ board: board.data });

@@ -14,7 +14,7 @@ class BoardAll extends React.Component {
   init = () => {
     setTimeout(async () => {
       try {
-        const board = await Axios.post("http://172.22.200.49:3002/boardall");
+        const board = await Axios.post("http://localhost:3002/boardall");
         this.setState({ board: board.data });
       } catch (error) {
         console.error(error);

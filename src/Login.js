@@ -25,7 +25,7 @@ class Login extends Component {
       headers: { "Content-Type": "application/json" },
     };
     window.localStorage.clear();
-    fetch("http://172.22.200.49:3002/login", login_info)
+    fetch("http://localhost:3002/login", login_info)
       .then((res) => {
         return res.json();
       })
