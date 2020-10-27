@@ -10,7 +10,9 @@ class App extends React.Component {
     divcode: "",
     islogin: "",
   };
-
+  componentDidMount() {
+    this.init();
+  }
   init = async () => {
     try {
       //const calData = await Axios.post("http://localhost:3002/cal");
