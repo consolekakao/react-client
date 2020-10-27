@@ -11,9 +11,12 @@ class App extends React.Component {
     islogin: "",
   };
 
+  componentWillMount() {
+    this.init()
+  }
+
   init = async () => {
     try {
-      //const calData = await Axios.post("http://localhost:3002/cal");
       const logininfo = JSON.parse(localStorage.getItem("userinfo"));
       if (!logininfo) {
         alert("로그인정보없음");
@@ -22,7 +25,6 @@ class App extends React.Component {
       }
     } catch (error) {
       console.error(error);
-      //  this.setState({ caldata: [] });
     }
   };
 

@@ -7,7 +7,7 @@ import Navbar from "./Navbar";
 import NotFound from "./Notfound";
 class Routes extends Component {
   render() {
-    window.localStorage.clear();
+    // window.localStorage.clear();
     return (
       <Router>
         <Switch>
