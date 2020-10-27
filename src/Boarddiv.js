@@ -2,27 +2,33 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 class BoardDiv extends React.Component {
-  state = {};
+  constructor(props) {
+    super(props);
+    this.state = { userdiv: this.props.userdivcode };
+  }
 
   componentDidMount() {
     this.init();
   }
 
   init = () => {
-    console.log("Now state");
-    const divcode = this.props;
-    console.log(divcode);
     setTimeout(async () => {
       try {
         const board = await Axios.post("http://localhost:3002/boarddiv", {
-          userdiv: divcode,
+          userdiv: this.state.userdiv,
         });
         this.setState({ board: board.data });
-      } catch (error) {
-        // console.error(error);
-        this.setState({ board: [] });
-      }
-    }, 100);
+      } catch (error) {}
+    }, 10);
+    console.log("Now state");
+    setInterval(async () => {
+      try {
+        const board = await Axios.post("http://localhost:3002/boarddiv", {
+          userdiv: this.state.userdiv,
+        });
+        this.setState({ board: board.data });
+      } catch (error) {}
+    }, 20500);
   };
 
   render() {

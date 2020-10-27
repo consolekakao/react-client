@@ -11,30 +11,37 @@ class Oklogin extends Component {
     username: [],
     userdiv: [],
   };
-
-  componentDidMount() {
+  componentWillMount() {
+    const logininfo = JSON.parse(localStorage.getItem("userinfo"));
+    if (!logininfo) {
+      this.props.history.push("/");
+      return;
+    }
+    this.setState({
+      userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
+    });
     this.init();
   }
 
   init = async () => {
     try {
-      // const calData = await Axios.post("http://172.22.200.49:3002/cal");
-      const logininfo = JSON.parse(localStorage.getItem("userinfo"));
+      const calData = await Axios.post("http://172.22.200.49:3002/cal");
 
-      if (!logininfo) {
-        alert("로그인정보없음");
-        return;
-      }
-
-      console.log("logininfo start");
-      console.log(logininfo);
-
-      console.log("logininfo end");
-      //  this.setState({ caldata: calData.data });
+      this.setState({ caldata: calData.data });
     } catch (error) {
       console.error(error);
-      //  this.setState({ caldata: [] });
+      this.setState({ caldata: [] });
     }
+    setInterval(async () => {
+      try {
+        const calData = await Axios.post("http://172.22.200.49:3002/cal");
+
+        this.setState({ caldata: calData.data });
+      } catch (error) {
+        console.error(error);
+        this.setState({ caldata: [] });
+      }
+    }, 1000);
   };
 
   render() {
@@ -51,9 +58,9 @@ class Oklogin extends Component {
       date,
       end,
     }));
+
     return (
       <>
-        <Navbar />
         <div className={"bodyall"}>
           {this.state.userdiv} 님 반갑습니다.
           <div className={"calendarbackboard"}>

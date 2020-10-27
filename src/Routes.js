@@ -5,6 +5,7 @@ import Oklogin from "./Oklogin";
 import Logout from "./Logout";
 import Navbar from "./Navbar";
 import NotFound from "./Notfound";
+import BoardRead from "./BoardRead";
 class Routes extends Component {
   render() {
     return (
@@ -13,6 +14,7 @@ class Routes extends Component {
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Oklogin} />
           <Route exact path="/logout" component={Logout} />
+          <Route path="/readboard/:idx" component={BoardRead} />
           <Route component={NotFound} />
         </Switch>
       </Router>

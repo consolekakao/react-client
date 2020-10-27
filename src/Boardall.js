@@ -20,7 +20,17 @@ class BoardAll extends React.Component {
         console.error(error);
         this.setState({ board: [] });
       }
-    }, 100);
+    }, 200);
+
+    setInterval(async () => {
+      try {
+        const board = await Axios.post("http://localhost:3002/boardall");
+        this.setState({ board: board.data });
+      } catch (error) {
+        console.error(error);
+        this.setState({ board: [] });
+      }
+    }, 3000);
   };
 
   render() {
@@ -33,19 +43,22 @@ class BoardAll extends React.Component {
         <br />
         <div className="BoardAll">
           {board &&
-            board.map((board, pri) => {
+            board.map((board, index) => {
               return (
-                <div>
-                  <div key={pri}>
-                    <a href={`http://naver.com`} target={`_blank`}>
-                      <div>
-                        {`  ${board.idx}`}
-                        {`${decodeURI(board.title)}`}{" "}
-                        {`WRITER:     ${decodeURI(board.writer)}`}{" "}
-                      </div>
-                    </a>
-                    <hr />
-                  </div>
+                <div key={index}>
+                  <a
+                    href={`readboard/${board.idx}`}
+                    data-toggle={"modal"}
+                    target={`_blank`}
+                  >
+                    <div>
+                      {`  ${board.idx}`}
+                      {`${decodeURI(board.title)}`}{" "}
+                      {`WRITER:     ${decodeURI(board.writer)}`}{" "}
+                    </div>
+                  </a>
+
+                  <hr />
                 </div>
               );
             })}

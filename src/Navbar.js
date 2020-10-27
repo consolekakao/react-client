@@ -1,9 +1,5 @@
 import React from "react";
-
-function logout() {
-  window.localStorage.clear();
-  this.history.push("/");
-}
+import Logout from "./Logout";
 
 class Navbar extends React.Component {
   state = {
@@ -14,8 +10,7 @@ class Navbar extends React.Component {
     return (
       <>
         <div className={"Navbar"}>
-          test
-          <button onClick={logout}>로그아웃</button>
+          <Logout />
         </div>
       </>
     );
