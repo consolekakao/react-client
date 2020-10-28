@@ -19,6 +19,7 @@ class Oklogin extends Component {
     }
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
+      username: JSON.parse(localStorage.getItem("userinfo")).username,
     });
     this.init();
   }
@@ -41,7 +42,7 @@ class Oklogin extends Component {
         console.error(error);
         this.setState({ caldata: [] });
       }
-    }, 1000);
+    }, 5000);
   };
 
   render() {
@@ -61,8 +62,8 @@ class Oklogin extends Component {
 
     return (
       <>
+        <Navbar name={this.state.username} grade={this.state.userdiv} />
         <div className={"bodyall"}>
-          {this.state.userdiv} 님 반갑습니다.
           <div className={"calendarbackboard"}>
             <div className={"calendar"}>
               <Fullcalendar

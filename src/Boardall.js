@@ -47,9 +47,7 @@ class BoardAll extends React.Component {
               return (
                 <div key={index}>
                   <a
-                    href={`readboard/${board.idx}`}
-                    data-toggle={"modal"}
-                    target={`_blank`}
+                    href={`readboard/${board.idx}/${board.title}/${board.writer}/${board.contents}`}
                   >
                     <div>
                       {`  ${board.idx}`}

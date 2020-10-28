@@ -45,7 +45,9 @@ class BoardDiv extends React.Component {
               return (
                 <div>
                   <div key={pri}>
-                    <a href={`http://daum.net`} target={`_blank`}>
+                    <a
+                      href={`readboard/${board.idx}/${board.title}/${board.writer}/${board.contents}`}
+                    >
                       <div>
                         {`  ${board.idx}`}
                         {`${decodeURI(board.title)}`}{" "}

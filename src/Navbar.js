@@ -2,15 +2,13 @@ import React from "react";
 import Logout from "./Logout";
 
 class Navbar extends React.Component {
-  state = {
-    username: [],
-  };
-
   render() {
     return (
       <>
         <div className={"Navbar"}>
-          <Logout />
+          {decodeURI(this.props.grade)}학년
+          <br />
+          {decodeURI(this.props.name)}님 반갑습니다.
         </div>
       </>
     );
