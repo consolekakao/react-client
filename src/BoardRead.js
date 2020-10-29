@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
 import Axios from "axios";
-import { render } from "@testing-library/react";
 
 class BoardRead extends React.Component {
   render() {

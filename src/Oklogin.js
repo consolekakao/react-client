@@ -5,6 +5,7 @@ import Axios from "axios";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import Navbar from "./Navbar";
+import CalendarColor from "./CalendarColor";
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -26,7 +27,9 @@ class Oklogin extends Component {
 
   init = async () => {
     try {
-      const calData = await Axios.post("http://172.22.200.49:3002/cal");
+      const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+        userdiv: this.state.userdiv,
+      });
 
       this.setState({ caldata: calData.data });
     } catch (error) {
@@ -35,7 +38,9 @@ class Oklogin extends Component {
     }
     setInterval(async () => {
       try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal");
+        const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+          userdiv: this.state.userdiv,
+        });
 
         this.setState({ caldata: calData.data });
       } catch (error) {
@@ -65,6 +70,7 @@ class Oklogin extends Component {
         <Navbar name={this.state.username} grade={this.state.userdiv} />
         <div className={"bodyall"}>
           <div className={"calendarbackboard"}>
+            <CalendarColor />
             <div className={"calendar"}>
               <Fullcalendar
                 plugins={[dayGridPlugin]}

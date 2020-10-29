@@ -64,6 +64,12 @@
   background-color: white;
   float: left;
   overflow: auto;
+
+  -ms-overflow-style: none; /*스크롤바 투명 */
+}
+
+::-webkit-scrollbar {
+  display: none; /*스크롤바 투명 */
 }
 
 .boardbackboard {
@@ -111,4 +117,31 @@
   width: 700px;
   height: 700px;
   background-color: white;
+}
+
+.calendarColorBackBoard {
+  width: 400px;
+  height: 60px;
+  padding-left: 60%;
+}
+
+.calendarColorPurple {
+  width: 15px;
+  height: 15px;
+  background-color: #a8a7fd;
+  float: left;
+}
+
+.calendarColorBasic {
+  width: 15px;
+  height: 15px;
+  background-color: #d1a77c;
+  float: left;
+}
+
+.calendarColorPink {
+  width: 15px;
+  height: 15px;
+  background-color: #f4a6d0;
+  float: left;
 }
