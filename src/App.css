@@ -60,11 +60,10 @@
   margin-left: 100px;
   min-width: 760px;
   height: 740px;
-  border-radius: 50px;
+  border-radius: 20px;
   background-color: white;
   float: left;
   overflow: auto;
-
   -ms-overflow-style: none; /*스크롤바 투명 */
 }
 
@@ -95,7 +94,7 @@
   height: 300px;
   border: 3px solid #888585;
   margin-bottom: 20px;
-  border-radius: 50px;
+  border-radius: 20px;
   overflow: hidden;
 }
 

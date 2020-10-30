@@ -27,7 +27,7 @@ class Events extends Component {
           color,
           date,
           end: end + " 00:00:02",
-          allday: true,
+          allday: false,
         },
       });
     } catch (e) {

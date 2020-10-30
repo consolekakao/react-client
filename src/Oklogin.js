@@ -4,8 +4,11 @@ import BoardDiv from "./Boarddiv";
 import Axios from "axios";
 import Fullcalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionplugin from "@fullcalendar/interaction";
+import timeGridPlugin from "@fullcalendar/timegrid";
 import Navbar from "./Navbar";
 import CalendarColor from "./CalendarColor";
+import listplugin from "@fullcalendar/list";
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -49,7 +52,11 @@ class Oklogin extends Component {
       }
     }, 5000);
   };
-
+  handleDateClick = (arg) => {
+    // bind with an arrow function
+    alert(arg.dateStr);
+    // alert(arg.date);
+  };
   render() {
     if (!window.localStorage.getItem("userinfo")) {
       const { history } = this.props;
@@ -73,9 +80,29 @@ class Oklogin extends Component {
             <CalendarColor />
             <div className={"calendar"}>
               <Fullcalendar
-                plugins={[dayGridPlugin]}
+                plugins={[dayGridPlugin, interactionplugin, timeGridPlugin]} //interactionplugin :Day Click Event
                 initialView="dayGridMonth" // dayGridWeek,
                 weekends={true}
+                dateClick={this.handleDateClick}
+                selectable={true}
+                displayEventTime={true}
+                events={filteredData}
+              />
+            </div>
+
+            <div className={"calendar"}>
+              <Fullcalendar
+                plugins={[
+                  dayGridPlugin,
+                  interactionplugin,
+                  timeGridPlugin,
+                  listplugin,
+                ]} //interactionplugin :Day Click Event
+                initialView="listWeek" // dayGridWeek,
+                weekends={true}
+                dateClick={this.handleDateClick}
+                selectable={true}
+                displayEventTime={true}
                 events={filteredData}
               />
             </div>
