@@ -16,10 +16,7 @@ class Routes extends Component {
           <Route path="/home" component={Oklogin} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/addcalendar" component={Events} />
-          <Route
-            path="/readboard/:idx/:title/:writer/:contents"
-            component={BoardRead}
-          />
+          <Route path="/boardread" component={BoardRead} />
           <Route component={NotFound} />
         </Switch>
       </Router>

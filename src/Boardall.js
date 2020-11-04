@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Axios from "axios";
-
+import { Link } from "react-router-dom";
 class BoardAll extends React.Component {
   state = {
     board: [],
@@ -46,15 +46,23 @@ class BoardAll extends React.Component {
             board.map((board, index) => {
               return (
                 <div key={index}>
-                  <a
-                    href={`readboard/${board.idx}/${board.title}/${board.writer}/${board.contents}`}
+                  <Link
+                    to={{
+                      pathname: "/boardread",
+                      state: {
+                        idx: board.idx,
+                        title: board.title,
+                        writer: board.writer,
+                        contents: board.contents,
+                      },
+                    }}
                   >
                     <div>
                       {`  ${board.idx}`}
                       {`${decodeURI(board.title)}`}{" "}
                       {`WRITER:     ${decodeURI(board.writer)}`}{" "}
                     </div>
-                  </a>
+                  </Link>
 
                   <hr />
                 </div>

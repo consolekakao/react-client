@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Axios from "axios";
+import { Link } from "react-router-dom";
 class BoardDiv extends React.Component {
   constructor(props) {
     super(props);
@@ -30,7 +31,6 @@ class BoardDiv extends React.Component {
       } catch (error) {}
     }, 20500);
   };
-
   render() {
     const { board } = this.state;
     return (
@@ -45,15 +45,23 @@ class BoardDiv extends React.Component {
               return (
                 <div>
                   <div key={pri}>
-                    <a
-                      href={`readboard/${board.idx}/${board.title}/${board.writer}/${board.contents}`}
+                    <Link
+                      to={{
+                        pathname: "/boardread",
+                        state: {
+                          idx: board.idx,
+                          title: board.title,
+                          writer: board.writer,
+                          contents: board.contents,
+                        },
+                      }}
                     >
                       <div>
                         {`  ${board.idx}`}
                         {`${decodeURI(board.title)}`}{" "}
                         {`WRITER:     ${decodeURI(board.writer)}`}{" "}
                       </div>
-                    </a>
+                    </Link>
                     <hr />
                   </div>
                 </div>

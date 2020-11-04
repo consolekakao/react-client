@@ -9,11 +9,15 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import Navbar from "./Navbar";
 import CalendarColor from "./CalendarColor";
 import listplugin from "@fullcalendar/list";
+import Events from "./addcal";
+import CalendarAll from "./Calendarall";
+import CalendarList from "./Calendarlist";
 class Oklogin extends Component {
   state = {
     caldata: [],
     username: [],
     userdiv: [],
+    userid: [],
   };
   componentWillMount() {
     const logininfo = JSON.parse(localStorage.getItem("userinfo"));
@@ -24,38 +28,12 @@ class Oklogin extends Component {
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
+      userid: JSON.parse(localStorage.getItem("userinfo")).userid,
     });
-    this.init();
   }
 
-  init = async () => {
-    try {
-      const calData = await Axios.post("http://172.22.200.49:3002/cal", {
-        userdiv: this.state.userdiv,
-      });
-
-      this.setState({ caldata: calData.data });
-    } catch (error) {
-      console.error(error);
-      this.setState({ caldata: [] });
-    }
-    setInterval(async () => {
-      try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal", {
-          userdiv: this.state.userdiv,
-        });
-
-        this.setState({ caldata: calData.data });
-      } catch (error) {
-        console.error(error);
-        this.setState({ caldata: [] });
-      }
-    }, 5000);
-  };
   handleDateClick = (arg) => {
-    // bind with an arrow function
     alert(arg.dateStr);
-    // alert(arg.date);
   };
   render() {
     if (!window.localStorage.getItem("userinfo")) {
@@ -63,14 +41,10 @@ class Oklogin extends Component {
       history.push("/");
     }
 
-    const { caldata } = this.state;
-
-    const filteredData = caldata.map(({ title, color, date, end }) => ({
-      title,
-      color,
-      date,
-      end,
-    }));
+    function Add() {
+      var top = document.getElementsByClassName("calendarbackboard")[0];
+      top.scrollTo({ top: 1600 });
+    }
 
     return (
       <>
@@ -78,34 +52,16 @@ class Oklogin extends Component {
         <div className={"bodyall"}>
           <div className={"calendarbackboard"}>
             <CalendarColor />
+
+            <button onClick={Add}>일정추가하기</button>
             <div className={"calendar"}>
-              <Fullcalendar
-                plugins={[dayGridPlugin, interactionplugin, timeGridPlugin]} //interactionplugin :Day Click Event
-                initialView="dayGridMonth" // dayGridWeek,
-                weekends={true}
-                dateClick={this.handleDateClick}
-                selectable={true}
-                displayEventTime={true}
-                events={filteredData}
-              />
+              <CalendarAll userid={this.state.userid} />
             </div>
 
             <div className={"calendar"}>
-              <Fullcalendar
-                plugins={[
-                  dayGridPlugin,
-                  interactionplugin,
-                  timeGridPlugin,
-                  listplugin,
-                ]} //interactionplugin :Day Click Event
-                initialView="listWeek" // dayGridWeek,
-                weekends={true}
-                dateClick={this.handleDateClick}
-                selectable={true}
-                displayEventTime={true}
-                events={filteredData}
-              />
+              <CalendarList />
             </div>
+            <Events />
           </div>
           <div className={"boardbackboard"}>
             <div className={"inboardall"}>
