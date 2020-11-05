@@ -1,14 +1,7 @@
 import React, { Component } from "react";
 import BoardAll from "./Boardall";
 import BoardDiv from "./Boarddiv";
-import Axios from "axios";
-import Fullcalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
-import interactionplugin from "@fullcalendar/interaction";
-import timeGridPlugin from "@fullcalendar/timegrid";
 import Navbar from "./Navbar";
-import CalendarColor from "./CalendarColor";
-import listplugin from "@fullcalendar/list";
 import Events from "./addcal";
 import CalendarAll from "./Calendarall";
 import CalendarList from "./Calendarlist";
@@ -25,7 +18,9 @@ class Oklogin extends Component {
       this.props.history.push("/");
       return;
     }
+
     this.setState({
+      caldata: "",
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
       userid: JSON.parse(localStorage.getItem("userinfo")).userid,
@@ -43,7 +38,7 @@ class Oklogin extends Component {
 
     function Add() {
       var top = document.getElementsByClassName("calendarbackboard")[0];
-      top.scrollTo({ top: 1600 });
+      top.scrollTo({ top: 1600, behavior: "smooth" });
     }
 
     return (
@@ -51,8 +46,6 @@ class Oklogin extends Component {
         <Navbar name={this.state.username} grade={this.state.userdiv} />
         <div className={"bodyall"}>
           <div className={"calendarbackboard"}>
-            <CalendarColor />
-
             <button onClick={Add}>일정추가하기</button>
             <div className={"calendar"}>
               <CalendarAll userid={this.state.userid} />

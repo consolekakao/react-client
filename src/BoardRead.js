@@ -1,6 +1,5 @@
 import React from "react";
 import "./App.css";
-import Axios from "axios";
 
 class BoardRead extends React.Component {
   render() {
@@ -15,6 +14,8 @@ class BoardRead extends React.Component {
         작성자 : {decodeURI(this.props.location.state.writer)}
         <br />
         내용 : {decodeURI(this.props.location.state.contents)}
+        <br />
+        일자 : {decodeURI(this.props.location.state.date)}
       </div>
     );
   }

@@ -54,6 +54,8 @@ class Login extends Component {
             id: "",
             pw: "",
           });
+          console.log(this.state);
+
           const { history } = this.props;
           history.push("/home");
         } else {

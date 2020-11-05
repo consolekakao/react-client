@@ -12,6 +12,7 @@ class Calendarlist extends Component {
     caldata: [],
     username: [],
     userdiv: [],
+    userid: [],
   };
 
   componentWillMount() {
@@ -23,6 +24,7 @@ class Calendarlist extends Component {
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
+      userid: JSON.parse(localStorage.getItem("userinfo")).userid,
     });
     this.init();
   }
@@ -31,6 +33,7 @@ class Calendarlist extends Component {
     try {
       const calData = await Axios.post("http://localhost:3002/cal", {
         userdiv: this.state.userdiv,
+        userid: this.state.userid,
       });
 
       this.setState({ caldata: calData.data });
@@ -42,6 +45,7 @@ class Calendarlist extends Component {
       try {
         const calData = await Axios.post("http://172.22.200.49:3002/cal", {
           userdiv: this.state.userdiv,
+          userid: this.state.userid,
         });
 
         this.setState({ caldata: calData.data });

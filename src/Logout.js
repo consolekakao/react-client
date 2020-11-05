@@ -1,9 +1,20 @@
 import React from "react";
+import { Redirect } from "react-router";
+import { Link } from "react-router-dom";
 class Logout extends React.Component {
   render() {
-    window.localStorage.clear();
-    this.props.history.push("/");
-    return <></>;
+    function logout() {
+      window.localStorage.clear();
+      this.setState = {};
+    }
+
+    return (
+      <>
+        <Link to="/">
+          <button onClick={logout}>로그아웃</button>
+        </Link>
+      </>
+    );
   }
 }
 

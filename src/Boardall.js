@@ -54,6 +54,7 @@ class BoardAll extends React.Component {
                         title: board.title,
                         writer: board.writer,
                         contents: board.contents,
+                        date: board.date,
                       },
                     }}
                   >
@@ -61,6 +62,7 @@ class BoardAll extends React.Component {
                       {`  ${board.idx}`}
                       {`${decodeURI(board.title)}`}{" "}
                       {`WRITER:     ${decodeURI(board.writer)}`}{" "}
+                      {`DATE:    ${decodeURI(board.date)}`}{" "}
                     </div>
                   </Link>
 

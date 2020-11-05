@@ -70,7 +70,7 @@ class Events extends Component {
   render() {
     function Top() {
       var top = document.getElementsByClassName("calendarbackboard")[0];
-      top.scrollTo({ top: 0 });
+      top.scrollTo({ top: 0, behavior: "smooth" });
     }
     console.log(this.state);
     return (
@@ -87,12 +87,13 @@ class Events extends Component {
             />
             <br />
             일정 상세
-            <input
+            <textarea
               className={"Add-Calendar-ContentsBar"}
-              type="text"
               name="contents"
               value={this.state.contents}
               onChange={this.handleChange}
+              cols="30"
+              rows="30"
             />
             <br />
             일정 시작 일시 &nbsp;&nbsp;&nbsp;&nbsp;

@@ -10,6 +10,7 @@ class Navbar extends React.Component {
           <br />
           {decodeURI(this.props.name)}님 반갑습니다.
         </div>
+        <Logout />
       </>
     );
   }

@@ -4,14 +4,13 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionplugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
-import CalendarColor from "./CalendarColor";
-import listplugin from "@fullcalendar/list";
 
 class Calendarall extends Component {
   state = {
     caldata: [],
     username: [],
     userdiv: [],
+    userid: [],
   };
 
   componentWillMount() {
@@ -20,9 +19,11 @@ class Calendarall extends Component {
       this.props.history.push("/");
       return;
     }
+
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
+      userid: JSON.parse(localStorage.getItem("userinfo")).userid,
     });
     this.init();
   }
@@ -33,6 +34,7 @@ class Calendarall extends Component {
     try {
       const calData = await Axios.post("http://localhost:3002/cal", {
         userdiv: this.state.userdiv,
+        userid: this.state.userid,
       });
 
       this.setState({ caldata: calData.data });
@@ -42,8 +44,9 @@ class Calendarall extends Component {
     }
     setInterval(async () => {
       try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+        const calData = await Axios.post("http://localhost:3002/cal", {
           userdiv: this.state.userdiv,
+          userid: this.state.userid,
         });
 
         this.setState({ caldata: calData.data });
