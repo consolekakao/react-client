@@ -36,17 +36,20 @@ class Oklogin extends Component {
       history.push("/");
     }
 
-    function Add() {
+    function AddCal() {
       var top = document.getElementsByClassName("calendarbackboard")[0];
       top.scrollTo({ top: 1600, behavior: "smooth" });
     }
-
+    function AddBoard() {
+      var boardtop = document.getElementsByClassName("boardbackboard")[0];
+      boardtop.scrollTo({ top: 1600, behavior: "smooth" });
+    }
     return (
       <>
         <Navbar name={this.state.username} grade={this.state.userdiv} />
         <div className={"bodyall"}>
           <div className={"calendarbackboard"}>
-            <button onClick={Add}>일정추가하기</button>
+            <button onClick={AddCal}>일정추가하기</button>
             <div className={"calendar"}>
               <CalendarAll userid={this.state.userid} />
             </div>
@@ -57,6 +60,7 @@ class Oklogin extends Component {
             <Events />
           </div>
           <div className={"boardbackboard"}>
+            <button onClick={AddBoard}>게시글 작성</button>
             <div className={"inboardall"}>
               <BoardAll />
             </div>

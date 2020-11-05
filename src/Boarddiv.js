@@ -15,7 +15,7 @@ class BoardDiv extends React.Component {
   init = () => {
     setTimeout(async () => {
       try {
-        const board = await Axios.post("http://localhost:3002/boarddiv", {
+        const board = await Axios.post("http://172.22.200.49:3002/boarddiv", {
           userdiv: this.state.userdiv,
         });
         this.setState({ board: board.data });
@@ -24,7 +24,7 @@ class BoardDiv extends React.Component {
     console.log("Now state");
     setInterval(async () => {
       try {
-        const board = await Axios.post("http://localhost:3002/boarddiv", {
+        const board = await Axios.post("http://172.22.200.49:3002/boarddiv", {
           userdiv: this.state.userdiv,
         });
         this.setState({ board: board.data });
