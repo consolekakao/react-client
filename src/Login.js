@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-
+import Hostinfo from "./RequestInfo"
 class Login extends Component {
   state = {
     id: "",
@@ -26,7 +26,7 @@ class Login extends Component {
       headers: { "Content-Type": "application/json" },
     };
     // window.localStorage.clear();
-    fetch("http://172.22.200.49:3002/login", loginInfo)
+    fetch(`http://${Hostinfo.host}:${Hostinfo.port}/login`, loginInfo)
       .then((res) => {
         return res.json();
       })

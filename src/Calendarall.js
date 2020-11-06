@@ -4,7 +4,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionplugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
-
+import Hostinfo from "./RequestInfo";
+import Swal from 'sweetalert2';
 class Calendarall extends Component {
   state = {
     caldata: [],
@@ -32,7 +33,7 @@ class Calendarall extends Component {
   };
   init = async () => {
     try {
-      const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+      const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
         userdiv: this.state.userdiv,
         userid: this.state.userid,
       });
@@ -44,7 +45,7 @@ class Calendarall extends Component {
     }
     setInterval(async () => {
       try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+        const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
           userdiv: this.state.userdiv,
           userid: this.state.userid,
         });
@@ -83,15 +84,19 @@ class Calendarall extends Component {
         dateClick={this.handleDateClick}
         eventClick={function (arg) {
           console.log(arg);
-          alert(
-            "일정 시작일:  " +
-              arg.event.startStr +
-              "\r\n일정 종료일:  " +
-              arg.event.endStr +
-              "\r\n일정 주제:  " +
-              arg.event.title +
-              "\r\n일정 상세:  "
-          );
+          var startdate = arg.event.startStr.substring(0,16) //일정 시작
+          var enddate = arg.event.startStr.substring(0,16) //일정 종료
+          var contents = arg.event.extendedProps.contents //일정 상세
+         
+          Swal.fire({title:`${arg.event.title}`,
+          html:
+          `
+          일정 시작일:  ${startdate} <br/>
+          일정 종료일:  ${enddate} <br/>
+          일정 상세 <br/>  
+          ${contents}
+           `})
+
         }}
         editable={true}
         selectable={true}
@@ -99,9 +104,21 @@ class Calendarall extends Component {
           console.log(arg.start);
           var title = prompt("일정 주제 입력 :   ");
           var contents = prompt("일정 상세 내용 입력 :  ");
-          var privated = prompt("전체 공개 일정: 0  \r\n 개인 일정: 1");
+          var privated = prompt(
+            `
+          전체 공개 일정: 0   
+          개인 일정: 1`);
           var color = prompt(
-            "색상선택: \r\n 1:하늘색 \r\n 2:분홍색 \r\n 3:연두색 \r\n 4:노란색 \r\n 5:보라색 \r\n  \r\n 전체공개 일정은 색상이 베이지색으로 고정됩니다. \r\n 미선택시 파란색으로 등록됩니다."
+            `
+             색상선택: 
+             1:하늘색 
+             2:분홍색
+             3:연두색 
+             4:노란색
+             5:보라색
+             
+             전체공개 일정은 색상이 베이지색으로 고정됩니다.
+             미선택시 파란색으로 등록됩니다.`
           );
 
           switch (color) {
@@ -126,7 +143,7 @@ class Calendarall extends Component {
           if (title) {
             Axios({
               method: "post",
-              url: "http://172.22.200.49:3002/addCalendarDrag",
+              url: `http://${Hostinfo.host}:${Hostinfo.port}/addCalendarDrag`,
               data: {
                 title,
                 color: color,

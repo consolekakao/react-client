@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { Component } from "react";
-
+import Hostinfo from "./RequestInfo"
 class Events extends Component {
   constructor(props) {
     super(props);
@@ -40,7 +40,7 @@ class Events extends Component {
       } = this.state;
       await Axios({
         method: "post",
-        url: "http://172.22.200.49:3002/addcalendar",
+        url: `http://${Hostinfo.host}:${Hostinfo.port}/addcalendar`,
         data: {
           title,
           starttime,

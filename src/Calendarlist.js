@@ -5,7 +5,7 @@ import interactionplugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
 import listplugin from "@fullcalendar/list";
-
+import Hostinfo from "./RequestInfo"
 class Calendarlist extends Component {
   state = {
     caldata: [],
@@ -30,7 +30,7 @@ class Calendarlist extends Component {
 
   init = async () => {
     try {
-      const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+      const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
         userdiv: this.state.userdiv,
         userid: this.state.userid,
       });
@@ -42,7 +42,7 @@ class Calendarlist extends Component {
     }
     setInterval(async () => {
       try {
-        const calData = await Axios.post("http://172.22.200.49:3002/cal", {
+        const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
           userdiv: this.state.userdiv,
           userid: this.state.userid,
         });

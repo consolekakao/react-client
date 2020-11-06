@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
+import Hostinfo from "./RequestInfo"
 class BoardAll extends React.Component {
   state = {
     board: [],
@@ -14,7 +15,7 @@ class BoardAll extends React.Component {
   init = () => {
     setTimeout(async () => {
       try {
-        const board = await Axios.post("http://172.22.200.49:3002/boardall");
+        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boardall`);
         this.setState({ board: board.data });
       } catch (error) {
         console.error(error);
@@ -24,7 +25,7 @@ class BoardAll extends React.Component {
 
     setInterval(async () => {
       try {
-        const board = await Axios.post("http://172.22.200.49:3002/boardall");
+        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boardall`);
         this.setState({ board: board.data });
       } catch (error) {
         console.error(error);
