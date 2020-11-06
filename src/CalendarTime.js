@@ -5,8 +5,7 @@ import interactionplugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
 import listplugin from "@fullcalendar/list";
-
-class Calendarlist extends Component {
+class CalendarTime extends Component {
   state = {
     caldata: [],
     username: [],
@@ -73,9 +72,10 @@ class Calendarlist extends Component {
     return (
       <Fullcalendar
         plugins={[dayGridPlugin, interactionplugin, timeGridPlugin, listplugin]} //interactionplugin :Day Click Event
-        initialView="listWeek" // dayGridWeek,
+        initialView="timeGridWeek" // dayGridWeek,
         weekends={true}
         dateClick={this.handleDateClick}
+        slotMinTime="09:00:00"
         selectable={true}
         displayEventTime={true}
         events={filteredData}
@@ -84,4 +84,4 @@ class Calendarlist extends Component {
   }
 }
 
-export default Calendarlist;
+export default CalendarTime;

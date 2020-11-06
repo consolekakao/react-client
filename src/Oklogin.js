@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Events from "./addcal";
 import CalendarAll from "./Calendarall";
 import CalendarList from "./Calendarlist";
+import CalendarTime from "./CalendarTime";
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -30,6 +31,7 @@ class Oklogin extends Component {
   handleDateClick = (arg) => {
     alert(arg.dateStr);
   };
+
   render() {
     if (!window.localStorage.getItem("userinfo")) {
       const { history } = this.props;
@@ -38,7 +40,7 @@ class Oklogin extends Component {
 
     function AddCal() {
       var top = document.getElementsByClassName("calendarbackboard")[0];
-      top.scrollTo({ top: 1600, behavior: "smooth" });
+      top.scrollTo({ top: 2200, behavior: "smooth" });
     }
     function AddBoard() {
       var boardtop = document.getElementsByClassName("boardbackboard")[0];
@@ -56,6 +58,10 @@ class Oklogin extends Component {
 
             <div className={"calendar"}>
               <CalendarList />
+            </div>
+
+            <div className={"calendar"}>
+              <CalendarTime />
             </div>
             <Events />
           </div>
