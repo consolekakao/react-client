@@ -3,15 +3,20 @@ import BoardAll from "./Boardall";
 import BoardDiv from "./Boarddiv";
 import Navbar from "./Navbar";
 import Events from "./addcal";
+import cors from "cors";
 import CalendarAll from "./Calendarall";
 import CalendarList from "./Calendarlist";
 import CalendarTime from "./CalendarTime";
+import io from "socket.io-client";
+
+var con = false;
 class Oklogin extends Component {
   state = {
     caldata: [],
     username: [],
     userdiv: [],
     userid: [],
+    islogin: false,
   };
   componentWillMount() {
     const logininfo = JSON.parse(localStorage.getItem("userinfo"));
@@ -19,13 +24,18 @@ class Oklogin extends Component {
       this.props.history.push("/");
       return;
     }
-
+    con = true;
     this.setState({
       caldata: "",
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
       userid: JSON.parse(localStorage.getItem("userinfo")).userid,
+      islogin: JSON.parse(localStorage.getItem("userinfo")).islogin,
     });
+    if (con) {
+      const socket = io("http://localhost:3002/");
+      socket.emit("hello", "hellowww142234");
+    }
   }
 
   handleDateClick = (arg) => {

@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import Hostinfo from "./RequestInfo"
+import Hostinfo from "./RequestInfo";
 class BoardDiv extends React.Component {
   constructor(props) {
     super(props);
@@ -16,18 +16,24 @@ class BoardDiv extends React.Component {
   init = () => {
     setTimeout(async () => {
       try {
-        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`, {
-          userdiv: this.state.userdiv,
-        });
+        const board = await Axios.post(
+          `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
+          {
+            userdiv: this.state.userdiv,
+          }
+        );
         this.setState({ board: board.data });
       } catch (error) {}
     }, 10);
     console.log("Now state");
     setInterval(async () => {
       try {
-        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`, {
-          userdiv: this.state.userdiv,
-        });
+        const board = await Axios.post(
+          `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
+          {
+            userdiv: this.state.userdiv,
+          }
+        );
         this.setState({ board: board.data });
       } catch (error) {}
     }, 20500);
@@ -42,10 +48,10 @@ class BoardDiv extends React.Component {
         <br />
         <div className="BoardDiv">
           {board &&
-            board.map((board, pri) => {
+            board.map((board, index) => {
               return (
                 <div>
-                  <div key={pri}>
+                  <div key={index}>
                     <Link
                       to={{
                         pathname: "/boardread",
