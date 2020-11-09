@@ -3,16 +3,19 @@ import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import Hostinfo from "./RequestInfo";
+import io from "socket.io-client";
+var socket;
+var con = false;
 class BoardDiv extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { userdiv: this.props.userdivcode };
+    this.state = { userdiv: this.props.userdivcode, userid: this.props.userid };
   }
-
+  /*
   componentDidMount() {
     this.init();
   }
-
+ 
   init = () => {
     setTimeout(async () => {
       try {
@@ -38,6 +41,15 @@ class BoardDiv extends React.Component {
       } catch (error) {}
     }, 20500);
   };
+  */
+  componentWillMount() {
+    if (this.props.userid && this.props.userdiv) {
+    } else {
+      //   this.props.history.push("/");
+      return;
+    }
+  }
+
   render() {
     const { board } = this.state;
     return (

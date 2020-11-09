@@ -5,13 +5,17 @@ import interactionplugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
 import Hostinfo from "./RequestInfo";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
+import io from "socket.io-client";
+var socket;
+var con;
 class Calendarall extends Component {
   state = {
     caldata: [],
     username: [],
     userdiv: [],
     userid: [],
+    islogin: false,
   };
 
   componentWillMount() {
@@ -19,12 +23,13 @@ class Calendarall extends Component {
     if (!logininfo) {
       this.props.history.push("/");
       return;
-    }
+    } else con = true;
 
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
       username: JSON.parse(localStorage.getItem("userinfo")).username,
       userid: JSON.parse(localStorage.getItem("userinfo")).userid,
+      islogin: JSON.parse(localStorage.getItem("userinfo")).islogin,
     });
     this.init();
   }
@@ -33,10 +38,13 @@ class Calendarall extends Component {
   };
   init = async () => {
     try {
-      const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
-        userdiv: this.state.userdiv,
-        userid: this.state.userid,
-      });
+      const calData = await Axios.post(
+        `http://${Hostinfo.host}:${Hostinfo.port}/cal`,
+        {
+          userdiv: this.state.userdiv,
+          userid: this.state.userid,
+        }
+      );
 
       this.setState({ caldata: calData.data });
     } catch (error) {
@@ -45,10 +53,13 @@ class Calendarall extends Component {
     }
     setInterval(async () => {
       try {
-        const calData = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/cal`, {
-          userdiv: this.state.userdiv,
-          userid: this.state.userid,
-        });
+        const calData = await Axios.post(
+          `http://${Hostinfo.host}:${Hostinfo.port}/cal`,
+          {
+            userdiv: this.state.userdiv,
+            userid: this.state.userid,
+          }
+        );
 
         this.setState({ caldata: calData.data });
       } catch (error) {
@@ -84,19 +95,19 @@ class Calendarall extends Component {
         dateClick={this.handleDateClick}
         eventClick={function (arg) {
           console.log(arg);
-          var startdate = arg.event.startStr.substring(0,16) //일정 시작
-          var enddate = arg.event.startStr.substring(0,16) //일정 종료
-          var contents = arg.event.extendedProps.contents //일정 상세
-         
-          Swal.fire({title:`${arg.event.title}`,
-          html:
-          `
+          var startdate = arg.event.startStr.substring(0, 16); //일정 시작
+          var enddate = arg.event.startStr.substring(0, 16); //일정 종료
+          var contents = arg.event.extendedProps.contents; //일정 상세
+
+          Swal.fire({
+            title: `${arg.event.title}`,
+            html: `
           일정 시작일:  ${startdate} <br/>
           일정 종료일:  ${enddate} <br/>
           일정 상세 <br/>  
           ${contents}
-           `})
-
+           `,
+          });
         }}
         editable={true}
         selectable={true}
@@ -107,7 +118,8 @@ class Calendarall extends Component {
           var privated = prompt(
             `
           전체 공개 일정: 0   
-          개인 일정: 1`);
+          개인 일정: 1`
+          );
           var color = prompt(
             `
              색상선택: 

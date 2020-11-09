@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import "./App.css";
-import Hostinfo from "./RequestInfo"
+import Hostinfo from "./RequestInfo";
 class Login extends Component {
   state = {
-    id: "",
-    pw: "",
+    id: "fluke9241",
+    pw: "1234",
     divcode: "0000",
     islogin: false,
   };

@@ -1,6 +1,7 @@
 import Axios from "axios";
 import React, { Component } from "react";
-import Hostinfo from "./RequestInfo"
+import Hostinfo from "./RequestInfo";
+
 class Events extends Component {
   constructor(props) {
     super(props);

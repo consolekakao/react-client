@@ -9,8 +9,8 @@ class Navbar extends React.Component {
           {decodeURI(this.props.grade)}학년
           <br />
           {decodeURI(this.props.name)}님 반갑습니다.
+          <Logout />
         </div>
-        <Logout />
       </>
     );
   }
