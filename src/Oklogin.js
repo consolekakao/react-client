@@ -55,20 +55,6 @@ class Oklogin extends Component {
           <div className={"front-Main"}>
             <TotalCalendar />
 
-            <div className={"boardbackboard"}>
-              <button onClick={AddBoard}>게시글 작성</button>
-              <div className={"inboardall"}>
-                <BoardAll />
-              </div>
-              <br />
-              <div className={"inboardall"}>
-                <BoardDiv
-                  userdivcode={this.state.userdiv}
-                  userid={this.state.userid}
-                />
-              </div>
-            </div>
-
             <TotalBoard
               userdivcode={this.state.userdiv}
               userid={this.state.userid}

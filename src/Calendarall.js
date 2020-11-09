@@ -114,59 +114,66 @@ class Calendarall extends Component {
         select={function selectDate(arg) {
           console.log(arg.start);
           var title = prompt("일정 주제 입력 :   ");
-          var contents = prompt("일정 상세 내용 입력 :  ");
-          var privated = prompt(
-            `
-          전체 공개 일정: 0   
-          개인 일정: 1`
-          );
-          var color = prompt(
-            `
-             색상선택: 
-             1:하늘색 
-             2:분홍색
-             3:연두색 
-             4:노란색
-             5:보라색
-             
-             전체공개 일정은 색상이 베이지색으로 고정됩니다.
-             미선택시 파란색으로 등록됩니다.`
-          );
 
-          switch (color) {
-            case "1":
-              color = "#82e4e6";
-              break;
-            case "2":
-              color = "#f4a6d0";
-              break;
-            case "3":
-              color = "#d1f17c";
-              break;
-            case "4":
-              color = "#fff648";
-              break;
-            case "5":
-              color = "#a8a7fd";
-              break;
-            default:
-              color = "#4B89DC";
-          }
           if (title) {
-            Axios({
-              method: "post",
-              url: `http://${Hostinfo.host}:${Hostinfo.port}/addCalendarDrag`,
-              data: {
-                title,
-                color: color,
-                startdate: arg.start,
-                contents: "Standard",
-                enddate: arg.end,
-                allday: true,
-                id: JSON.parse(window.localStorage.getItem("userinfo")).userid,
-                privated: "0",
-              },
-            });
+            var contents = prompt("일정 상세 내용 입력 :  ");
+            if (contents) {
+              var privated = prompt(
+                `
+              전체 공개 일정: 0   
+              개인 일정: 1`
+              );
+              if (privated) {
+                var color = prompt(
+                  `
+                   색상선택: 
+                   1:하늘색 
+                   2:분홍색
+                   3:연두색 
+                   4:노란색
+                   5:보라색
+                   
+                   전체공개 일정은 색상이 베이지색으로 고정됩니다.
+                   미선택시 파란색으로 등록됩니다.`
+                );
+
+                switch (color) {
+                  case "1":
+                    color = "#82e4e6";
+                    break;
+                  case "2":
+                    color = "#f4a6d0";
+                    break;
+                  case "3":
+                    color = "#d1f17c";
+                    break;
+                  case "4":
+                    color = "#fff648";
+                    break;
+                  case "5":
+                    color = "#a8a7fd";
+                    break;
+                  default:
+                    color = "#4B89DC";
+                }
+
+                Axios({
+                  method: "post",
+                  url: `http://${Hostinfo.host}:${Hostinfo.port}/addCalendarDrag`,
+                  data: {
+                    title,
+                    color: color,
+                    startdate: arg.start,
+                    contents: "Standard",
+                    enddate: arg.end,
+                    allday: true,
+                    id: JSON.parse(window.localStorage.getItem("userinfo"))
+                      .userid,
+                    privated: "0",
+                  },
+                });
+              }
+            }
           }
         }}
         displayEventTime={true}

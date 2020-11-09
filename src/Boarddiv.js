@@ -3,22 +3,22 @@ import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import Hostinfo from "./RequestInfo";
-import io from "socket.io-client";
-var socket;
-var con = false;
 class BoardDiv extends React.Component {
   constructor(props) {
     super(props);
     this.state = { userdiv: this.props.userdivcode, userid: this.props.userid };
   }
-  /*
+
   componentDidMount() {
     this.init();
   }
- 
+
   init = () => {
     setTimeout(async () => {
       try {
+        console.log("---------23413-");
+        console.log(this.state);
+        console.log("---------");
         const board = await Axios.post(
           `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
           {
@@ -27,7 +27,7 @@ class BoardDiv extends React.Component {
         );
         this.setState({ board: board.data });
       } catch (error) {}
-    }, 10);
+    }, 1000);
     console.log("Now state");
     setInterval(async () => {
       try {
@@ -41,7 +41,7 @@ class BoardDiv extends React.Component {
       } catch (error) {}
     }, 20500);
   };
-  */
+
   componentWillMount() {
     if (this.props.userid && this.props.userdiv) {
     } else {
