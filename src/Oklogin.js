@@ -4,6 +4,7 @@ import TotalCalendar from "./totalCalendar";
 import Category from "./category";
 import TotalBoard from "./totalBoard";
 import Logout from "./Logout";
+import Scroll from "./ScrollCheck"
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -38,57 +39,14 @@ class Oklogin extends Component {
       const { history } = this.props;
       history.push("/");
     }
-    var temp;
+    
+const scrollCheck = () => Scroll();
 
-    function checkScroll() {
-      var scrollLoaction = document.getElementsByClassName("front-Main")[0]
-        .scrollTop;
-      console.log("seroll:   " + scrollLoaction);
-
-      console.log("temp before :" + temp);
-      if (scrollLoaction > temp) {
-        if (scrollLoaction <= "300" && scrollLoaction >= "250") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 1200, behavior: "smooth" });
-        }
-
-        if (scrollLoaction <= "1700" && scrollLoaction >= "1600") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 2450, behavior: "smooth" });
-        }
-
-        if (scrollLoaction <= "2900" && scrollLoaction >= "2800") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 3600, behavior: "smooth" });
-        }
-      } else {
-        if (scrollLoaction >= "600" && scrollLoaction <= "800") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 0, behavior: "smooth" });
-        }
-        if (scrollLoaction >= "1800" && scrollLoaction <= "2000") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 1200, behavior: "smooth" });
-        }
-        if (scrollLoaction >= "3000" && scrollLoaction <= "3200") {
-          document
-            .getElementsByClassName("front-Main")[0]
-            .scrollTo({ top: 2450, behavior: "smooth" });
-        }
-      }
-
-      temp = scrollLoaction;
-    }
 
     return (
       <>
-        <div className={"front"} onScroll={checkScroll}>
-          <div className={"front-Category"}>
+        <div className={"front"} onScroll={scrollCheck}>
+          <div className={"front-Category"} >
             <Navbar
               name={this.state.username}
               grade={this.state.userdiv}

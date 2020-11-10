@@ -28,11 +28,9 @@ class Calendarall extends Component {
       userid: JSON.parse(localStorage.getItem("userinfo")).userid,
       islogin: JSON.parse(localStorage.getItem("userinfo")).islogin,
     });
-    //   this.init();
+       this.init();
   }
-  handleDateClick = (arg) => {
-    alert(arg.dateStr);
-  };
+  
   init = async () => {
     try {
       const calData = await Axios.post(
@@ -63,7 +61,7 @@ class Calendarall extends Component {
         console.error(error);
         this.setState({ caldata: [] });
       }
-    }, 5000);
+    }, 10000);
   };
 
   render() {

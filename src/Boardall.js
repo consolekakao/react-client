@@ -12,8 +12,7 @@ class BoardAll extends React.Component {
     this.init();
   }
 
-  init = () => {
-    setTimeout(async () => {
+  init = async () => {
       try {
         const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boardall`);
         this.setState({ board: board.data });
@@ -21,7 +20,7 @@ class BoardAll extends React.Component {
         console.error(error);
         this.setState({ board: [] });
       }
-    }, 200);
+   
 
     setInterval(async () => {
       try {
@@ -31,7 +30,7 @@ class BoardAll extends React.Component {
         console.error(error);
         this.setState({ board: [] });
       }
-    }, 3000);
+    }, 10000);
   };
 
   render() {

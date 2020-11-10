@@ -1,6 +1,12 @@
+import Axios from "axios";
 import React, { Component } from "react";
-
+import Hostinfo from "./RequestInfo";
 class Category extends Component {
+
+
+
+
+
   render() {
     return (
       <>
@@ -85,15 +91,27 @@ function onMouseFtp() {
 //////////////////////////////////////////////////////////
 //마우스 클릭이벤트
 function clickMyInfo() {
+  
   document
     .getElementsByClassName("front-Main")[0]
     .scrollTo({ top: 0, behavior: "smooth" });
 }
 
-function clickCalendar() {
+async function clickCalendar() {
+ 
+    var responseData = await Axios.post(
+      `http://${Hostinfo.host}:${Hostinfo.port}/cal`
+    );
+  
+  
+ // this.setState({ caldata: responseData });
+  
+
+
   document
     .getElementsByClassName("front-Main")[0]
     .scrollTo({ top: 1200, behavior: "smooth" });
+
 }
 function clickBoard() {
   document

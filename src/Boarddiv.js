@@ -13,12 +13,10 @@ class BoardDiv extends React.Component {
     this.init();
   }
 
-  init = () => {
-    setTimeout(async () => {
+  init = async () => {
+    
       try {
-        console.log("---------23413-");
-        console.log(this.state);
-        console.log("---------");
+       
         const board = await Axios.post(
           `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
           {
@@ -27,7 +25,7 @@ class BoardDiv extends React.Component {
         );
         this.setState({ board: board.data });
       } catch (error) {}
-    }, 1000);
+    
     console.log("Now state");
     setInterval(async () => {
       try {
@@ -39,7 +37,7 @@ class BoardDiv extends React.Component {
         );
         this.setState({ board: board.data });
       } catch (error) {}
-    }, 20500);
+    }, 10000);
   };
 
   componentWillMount() {

@@ -52,7 +52,7 @@ class CalendarTime extends Component {
         console.error(error);
         this.setState({ caldata: [] });
       }
-    }, 5000);
+    }, 10000);
   };
 
   render() {
