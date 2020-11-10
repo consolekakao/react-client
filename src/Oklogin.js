@@ -1,10 +1,9 @@
 import React, { Component } from "react";
-import BoardAll from "./Boardall";
-import BoardDiv from "./Boarddiv";
 import Navbar from "./Navbar";
 import TotalCalendar from "./totalCalendar";
 import Category from "./category";
 import TotalBoard from "./totalBoard";
+import Logout from "./Logout";
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -38,10 +37,6 @@ class Oklogin extends Component {
       history.push("/");
     }
 
-    function AddBoard() {
-      var boardtop = document.getElementsByClassName("boardbackboard")[0];
-      boardtop.scrollTo({ top: 1600, behavior: "smooth" });
-    }
     return (
       <>
         <div className={"front"}>
@@ -53,12 +48,20 @@ class Oklogin extends Component {
           </div>
 
           <div className={"front-Main"}>
-            <TotalCalendar />
+            <div className={"section-Info"}></div>
+            <div className={"section-Calendar"}>
+              <TotalCalendar />
+            </div>
+            <div className={"section-Board"}>
+              <TotalBoard
+                userdivcode={this.state.userdiv}
+                userid={this.state.userid}
+              />
+            </div>
 
-            <TotalBoard
-              userdivcode={this.state.userdiv}
-              userid={this.state.userid}
-            />
+            <div className={"section-Ftp"}>
+              <Logout />
+            </div>
           </div>
         </div>
       </>

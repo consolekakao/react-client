@@ -8,7 +8,7 @@ class TotalCalendar extends React.Component {
   render() {
     function AddCal() {
       var top = document.getElementsByClassName("calendarbackboard")[0];
-      top.scrollTo({ top: 2200, behavior: "smooth" });
+      top.scrollTo({ top: 3200, behavior: "smooth" });
     }
     return (
       <>

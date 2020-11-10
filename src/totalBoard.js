@@ -11,18 +11,16 @@ class TotalBoard extends Component {
     console.log(this.state);
     return (
       <>
-        <div className={"temp"}>
-          <div className={"boardbackboard"}>
-            <div className={"inboardall"}>
-              <BoardAll />
-            </div>
-            <br />
-            <div className={"inboardall"}>
-              <BoardDiv
-                userdivcode={this.state.userdiv}
-                userid={this.state.userid}
-              />
-            </div>
+        <div className={"boardbackboard"}>
+          <div className={"inboardall"}>
+            <BoardAll />
+          </div>
+          <br />
+          <div className={"inboardall"}>
+            <BoardDiv
+              userdivcode={this.state.userdiv}
+              userid={this.state.userid}
+            />
           </div>
         </div>
       </>
