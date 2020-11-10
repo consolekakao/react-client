@@ -4,15 +4,16 @@ class Navbar extends React.Component {
     return (
       <>
         <div className={"Navbar"}>
-          <div className={"nav-Left"}>
+          <img className={"nav-profile"} src={this.props.profilesrc} />
+          <br />
+          <br />
+          <br />
+          <div className={"nav-info"}>
             {decodeURI(this.props.grade)}학년
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+            <br />
             {decodeURI(this.props.name)}
           </div>
-          <img
-            className={"nav-Right"}
-            src={"http://alpacao.cafe24.com/can/src1.png"}
-          />
         </div>
       </>
     );

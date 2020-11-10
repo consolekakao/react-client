@@ -66,10 +66,11 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className={"loginCss"}>
         <form onSubmit={this.handlesubmit}>
           <div>
             <input
+              className={"idInput"}
               placeholder="아이디입력"
               value={this.state.id}
               onChange={this.handleid}
@@ -77,13 +78,16 @@ class Login extends Component {
           </div>
           <div>
             <input
+              className={"pwInput"}
               placeholder="패스워드입력"
               value={this.state.pw}
               onChange={this.handlepw}
             />
           </div>
           <div>
-            <button onClick={this.handlelogin}>로그인</button>
+            <button className={"loginButton"} onClick={this.handlelogin}>
+              로그인
+            </button>
           </div>
         </form>
       </div>

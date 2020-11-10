@@ -7,18 +7,34 @@ class Category extends Component {
         <ul>
           <li
             onClick={clickMyInfo}
-            className={"menu-List"}
-            onMouseUp={onMouseMyInfo}
+            onMouseOver={onMouseMyinfo}
+            onMouseOut={outMouseMyinfo}
+            className={"menu-List-Myinfo"}
           >
             MY info
           </li>
-          <li onClick={clickCalendar} className={"menu-List"}>
+          <li
+            onClick={clickCalendar}
+            onMouseOver={onMouseMyCalendar}
+            onMouseOut={outMouseCalendar}
+            className={"menu-List-Calendar"}
+          >
             Calendar
           </li>
-          <li onClick={clickBoard} className={"menu-List"}>
+          <li
+            onClick={clickBoard}
+            onMouseOver={onMouseBoard}
+            onMouseOut={outMouseBoard}
+            className={"menu-List-Board"}
+          >
             Board
           </li>
-          <li onClick={clickFtp} className={"menu-List"}>
+          <li
+            onClick={clickFtp}
+            onMouseOver={onMouseFtp}
+            onMouseOut={outMouseFtp}
+            className={"menu-List-Ftp"}
+          >
             FTP
           </li>
         </ul>
@@ -26,27 +42,68 @@ class Category extends Component {
     );
   }
 }
+//////////////////////////////////////////////////////
+//마우스 아웃시
 
-function onMouseMyInfo() {
-  var categoryOnMouse = document.getElementsByClassName("menu-List")[0];
+function outMouseMyinfo() {
+  document.getElementsByClassName("menu-List-Myinfo")[0].style.color =
+    "#727272";
 }
-
+function outMouseCalendar() {
+  document.getElementsByClassName("menu-List-Calendar")[0].style.color =
+    "#727272";
+}
+function outMouseBoard() {
+  document.getElementsByClassName("menu-List-Board")[0].style.color = "#727272";
+}
+function outMouseFtp() {
+  document.getElementsByClassName("menu-List-Ftp")[0].style.color = "#727272";
+}
+//////////////////////////////////////////////////////
+// 마우스 오버시
+function onMouseMyinfo() {
+  document.getElementsByClassName("menu-List-Myinfo")[0].style.color =
+    "#FFFFFF";
+  document.getElementsByClassName("menu-List-Myinfo")[0].style.cursor =
+    "default";
+}
+function onMouseMyCalendar() {
+  document.getElementsByClassName("menu-List-Calendar")[0].style.color =
+    "#FFFFFF";
+  document.getElementsByClassName("menu-List-Calendar")[0].style.cursor =
+    "default";
+}
+function onMouseBoard() {
+  document.getElementsByClassName("menu-List-Board")[0].style.color = "#FFFFFF";
+  document.getElementsByClassName("menu-List-Board")[0].style.cursor =
+    "default";
+}
+function onMouseFtp() {
+  document.getElementsByClassName("menu-List-Ftp")[0].style.color = "#FFFFFF";
+  document.getElementsByClassName("menu-List-Ftp")[0].style.cursor = "default";
+}
+//////////////////////////////////////////////////////////
+//마우스 클릭이벤트
 function clickMyInfo() {
-  var categoryClick = document.getElementsByClassName("front-Main")[0];
-  categoryClick.scrollTo({ top: 0, behavior: "smooth" });
+  document
+    .getElementsByClassName("front-Main")[0]
+    .scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function clickCalendar() {
-  var categoryClick = document.getElementsByClassName("front-Main")[0];
-  categoryClick.scrollTo({ top: 1200, behavior: "smooth" });
+  document
+    .getElementsByClassName("front-Main")[0]
+    .scrollTo({ top: 1200, behavior: "smooth" });
 }
 function clickBoard() {
-  var categoryClick = document.getElementsByClassName("front-Main")[0];
-  categoryClick.scrollTo({ top: 2400, behavior: "smooth" });
+  document
+    .getElementsByClassName("front-Main")[0]
+    .scrollTo({ top: 2400, behavior: "smooth" });
 }
 function clickFtp() {
-  var categoryClick = document.getElementsByClassName("front-Main")[0];
-  categoryClick.scrollTo({ top: 3600, behavior: "smooth" });
+  document
+    .getElementsByClassName("front-Main")[0]
+    .scrollTo({ top: 3600, behavior: "smooth" });
 }
-
+/////////////////////////////////////////////////////////////
 export default Category;

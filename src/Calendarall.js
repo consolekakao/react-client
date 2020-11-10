@@ -6,9 +6,6 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import Axios from "axios";
 import Hostinfo from "./RequestInfo";
 import Swal from "sweetalert2";
-import io from "socket.io-client";
-var socket;
-var con;
 class Calendarall extends Component {
   state = {
     caldata: [],
@@ -23,7 +20,7 @@ class Calendarall extends Component {
     if (!logininfo) {
       this.props.history.push("/");
       return;
-    } else con = true;
+    }
 
     this.setState({
       userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
@@ -31,7 +28,7 @@ class Calendarall extends Component {
       userid: JSON.parse(localStorage.getItem("userinfo")).userid,
       islogin: JSON.parse(localStorage.getItem("userinfo")).islogin,
     });
-    this.init();
+    //   this.init();
   }
   handleDateClick = (arg) => {
     alert(arg.dateStr);
