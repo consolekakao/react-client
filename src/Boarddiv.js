@@ -14,18 +14,16 @@ class BoardDiv extends React.Component {
   }
 
   init = async () => {
-    
-      try {
-       
-        const board = await Axios.post(
-          `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
-          {
-            userdiv: this.state.userdiv,
-          }
-        );
-        this.setState({ board: board.data });
-      } catch (error) {}
-    
+    try {
+      const board = await Axios.post(
+        `http://${Hostinfo.host}:${Hostinfo.port}/boarddiv`,
+        {
+          userdiv: this.state.userdiv,
+        }
+      );
+      this.setState({ board: board.data });
+    } catch (error) {}
+
     console.log("Now state");
     setInterval(async () => {
       try {
@@ -53,7 +51,8 @@ class BoardDiv extends React.Component {
     return (
       <>
         {" "}
-        부서 게시판
+        <div className={"boardFormTitleColor"}>부서 게시판</div>
+        <hr />
         <br />
         <br />
         <div className="BoardDiv">
@@ -74,14 +73,18 @@ class BoardDiv extends React.Component {
                         },
                       }}
                     >
-                      <div>
-                        {`  ${board.idx}`}
-                        {`${decodeURI(board.title)}`}{" "}
-                        {`WRITER:     ${decodeURI(board.writer)}`}{" "}
-                        {`DATE:    ${decodeURI(board.date)}`}{" "}
+                      <div className={"boardform"}>
+                        <div className={"boardtitle"}>
+                          {`${decodeURI(board.title)}`}{" "}
+                        </div>
+                        <div className={"boardwriter"}>
+                          {`     ${decodeURI(board.writer)}`}{" "}
+                        </div>
+                        <div className={"boarddate"}>
+                          {`   ${decodeURI(board.date)}`}{" "}
+                        </div>
                       </div>
                     </Link>
-                    <hr />
                   </div>
                 </div>
               );

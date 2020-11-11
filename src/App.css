@@ -138,12 +138,13 @@
 
 .boardbackboard {
   margin-left: 50px;
-  margin-top: 200px;
-  min-width: 400px;
-  height: 700px;
+  margin-top: 100px;
+  width: 80%;
+  min-width: 1000px;
+  height: 750px;
   padding: 20px;
   background-color: #ffffff;
-  border-radius: 50px;
+  border-radius: 20px;
   float: left;
   overflow: auto;
 }
@@ -155,20 +156,74 @@
 }
 
 .inboardall {
-  width: 500px;
-  height: 300px;
-  border: 3px solid #888585;
+  font-size: x-large;
+  padding-top: 30px;
+  width: 45%;
+  min-width: 400px;
+  height: 700px;
   margin-bottom: 20px;
+  float: left;
   border-radius: 20px;
   overflow: hidden;
 }
 
 .inboarddiv {
-  width: 500px;
-  height: 300px;
-  border: 3px solid #888585;
+  font-size: x-large;
+  padding-top: 30px;
+  width: 45%;
+  min-width: 400px;
+  height: 700px;
+  margin-left: 30px;
   margin-bottom: 20px;
-  border-radius: 50px;
+  float: left;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.boardform {
+  margin-left: 30px;
+  width: 530px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.boardtitle {
+  width: 260px;
+  margin-right: 20px;
+  height: 27px;
+  float: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.boardwriter {
+  width: 110px;
+  height: 27px;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.boarddate {
+  padding: 2px;
+  font-size: medium;
+  margin-left: 20px;
+  text-align: right;
+  width: 110px;
+  height: 27px;
+  float: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.boardFormTitleColor {
+  font-size: 30px;
+  color: #20313d;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-bottom: 30px;
 }
 
 .Navbar {

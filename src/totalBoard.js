@@ -15,8 +15,7 @@ class TotalBoard extends Component {
           <div className={"inboardall"}>
             <BoardAll />
           </div>
-          <br />
-          <div className={"inboardall"}>
+          <div className={"inboarddiv"}>
             <BoardDiv
               userdivcode={this.state.userdiv}
               userid={this.state.userid}

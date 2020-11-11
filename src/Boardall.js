@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
-import Hostinfo from "./RequestInfo"
+import Hostinfo from "./RequestInfo";
 class BoardAll extends React.Component {
   state = {
     board: [],
@@ -13,18 +13,21 @@ class BoardAll extends React.Component {
   }
 
   init = async () => {
-      try {
-        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boardall`);
-        this.setState({ board: board.data });
-      } catch (error) {
-        console.error(error);
-        this.setState({ board: [] });
-      }
-   
+    try {
+      const board = await Axios.post(
+        `http://${Hostinfo.host}:${Hostinfo.port}/boardall`
+      );
+      this.setState({ board: board.data });
+    } catch (error) {
+      console.error(error);
+      this.setState({ board: [] });
+    }
 
     setInterval(async () => {
       try {
-        const board = await Axios.post(`http://${Hostinfo.host}:${Hostinfo.port}/boardall`);
+        const board = await Axios.post(
+          `http://${Hostinfo.host}:${Hostinfo.port}/boardall`
+        );
         this.setState({ board: board.data });
       } catch (error) {
         console.error(error);
@@ -38,8 +41,8 @@ class BoardAll extends React.Component {
     return (
       <>
         {" "}
-        전체게시판
-        <br />
+        <div className={"boardFormTitleColor"}>전체 게시판</div>
+        <hr /> <br />
         <br />
         <div className="BoardAll">
           {board &&
@@ -58,15 +61,18 @@ class BoardAll extends React.Component {
                       },
                     }}
                   >
-                    <div>
-                      {`  ${board.idx}`}
-                      {`${decodeURI(board.title)}`}{" "}
-                      {`WRITER:     ${decodeURI(board.writer)}`}{" "}
-                      {`DATE:    ${decodeURI(board.date)}`}{" "}
+                    <div className={"boardform"}>
+                      <div className={"boardtitle"}>
+                        {`${decodeURI(board.title)}`}{" "}
+                      </div>
+                      <div className={"boardwriter"}>
+                        {`     ${decodeURI(board.writer)}`}{" "}
+                      </div>
+                      <div className={"boarddate"}>
+                        {`   ${decodeURI(board.date)}`}{" "}
+                      </div>
                     </div>
                   </Link>
-
-                  <hr />
                 </div>
               );
             })}
