@@ -3,6 +3,18 @@ import "./App.css";
 import Axios from "axios";
 import { Link } from "react-router-dom";
 import Hostinfo from "./RequestInfo";
+import Swal from "sweetalert2";
+const writeButtonClick = () => {
+  //게시글 작성 버튼이벤트
+  Swal.fire({
+    title: `부서 게시판 게시글 작성하기`,
+    html: `
+    
+    <input type="text" size="40" name="title" id="title" placeholder="제목 작성" style="height:30px; margin-top:20px;"/> <br/>
+    <textarea name="title" id="title" cols="30" rows="100"style="margin-top:20px; height:30px; width:400px;height:400px; "/> 
+    `,
+  });
+};
 class BoardDiv extends React.Component {
   constructor(props) {
     super(props);
@@ -52,6 +64,9 @@ class BoardDiv extends React.Component {
       <>
         {" "}
         <div className={"boardFormTitleColor"}>부서 게시판</div>
+        <div className={"writeBoard"}>
+          <button onClick={writeButtonClick}>글작성</button>
+        </div>
         <hr />
         <br />
         <br />

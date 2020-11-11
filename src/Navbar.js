@@ -9,7 +9,7 @@ class Navbar extends React.Component {
           <br />
           <br />
           <div className={"nav-info"}>
-            {decodeURI(this.props.grade)}학년
+            {decodeURI(this.props.grade)}부서
             <br />
             <br />
             {decodeURI(this.props.name)}

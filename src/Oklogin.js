@@ -4,7 +4,9 @@ import TotalCalendar from "./totalCalendar";
 import Category from "./category";
 import TotalBoard from "./totalBoard";
 import Logout from "./Logout";
-import Scroll from "./ScrollCheck"
+import Scroll from "./ScrollCheck";
+import Swal from "sweetalert2";
+import Ftp from "./Ftp";
 class Oklogin extends Component {
   state = {
     caldata: [],
@@ -30,6 +32,19 @@ class Oklogin extends Component {
     });
   }
 
+  componentDidMount() {
+    console.log(this.state);
+    Swal.fire({
+      position: "center",
+      icon: "success",
+      title: `${decodeURI(this.state.userdiv)}부서 <br/>    ${decodeURI(
+        this.state.username
+      )}님 환영합니다.`,
+      showConfirmButton: false,
+      timer: 3000,
+    });
+  }
+
   handleDateClick = (arg) => {
     alert(arg.dateStr);
   };
@@ -39,14 +54,13 @@ class Oklogin extends Component {
       const { history } = this.props;
       history.push("/");
     }
-    
-const scrollCheck = () => Scroll();
 
+    const scrollCheck = () => Scroll();
 
     return (
       <>
         <div className={"front"} onScroll={scrollCheck}>
-          <div className={"front-Category"} >
+          <div className={"front-Category"}>
             <Navbar
               name={this.state.username}
               grade={this.state.userdiv}
@@ -70,6 +84,8 @@ const scrollCheck = () => Scroll();
             </div>
 
             <div className={"section-Ftp"}>
+              <Ftp />
+
               <Logout />
             </div>
           </div>

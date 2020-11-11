@@ -8,7 +8,17 @@ class BoardAll extends React.Component {
     board: [],
   };
 
-  componentDidMount() {
+  componentWillMount() {
+    const logininfo = JSON.parse(localStorage.getItem("userinfo"));
+    if (!logininfo) {
+      this.props.history.push("/");
+      return;
+    }
+    this.setState({
+      userdiv: JSON.parse(localStorage.getItem("userinfo")).userdivcode,
+      username: JSON.parse(localStorage.getItem("userinfo")).username,
+      userid: JSON.parse(localStorage.getItem("userinfo")).userid,
+    });
     this.init();
   }
 
