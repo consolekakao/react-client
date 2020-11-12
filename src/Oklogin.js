@@ -84,7 +84,10 @@ class Oklogin extends Component {
             </div>
 
             <div className={"section-Ftp"}>
-              <Ftp />
+              <Ftp
+                userdivcode={this.state.userdiv}
+                userid={this.state.userid}
+              />
 
               <Logout />
             </div>
