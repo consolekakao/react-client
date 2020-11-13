@@ -27,11 +27,13 @@
 > > > 작성이 가능합니다.
 > >
 > > > EN: Schedules can be shared with people of the same level, and personal schedules can be registered by date and time.
+> > > ![img](http://alpacao.cafe24.com/proimg1.PNG)
 > >
 > > Board :
 > >
 > > > KO: 게시판은 전체게시판 및 부서 별 게시판으로 나누어 사용이 가능하며 부서 게시판은 해당되는 부서의 게시글만 표시됩니다.
 > >
+> > > ![img](http://alpacao.cafe24.com/proimg2.PNG)
 > > > EN: Posts can be shared among people of the same level, and bulletin boards can be used for each department.
 > >
 > > Chat :
@@ -91,10 +93,14 @@
 
 ## ~2020-11-11
 
-> File Update ADd.
+> File Update ADD.
 >
 > CSS & Layout Update
 >
 > Board 구동 방식 변경.
 >
 > Sweetalert2로 Login시 알림 추가.
+
+## ~2020-11-13
+
+> Multer-sftp를 이용한 ftp업로드
