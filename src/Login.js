@@ -17,6 +17,10 @@ class Login extends Component {
     this.setState({ pw: e.target.value });
   };
 
+  signip = () => {
+    this.props.history.push("/signup");
+  };
+
   handlelogin = (e) => {
     e.preventDefault();
     // 변수명 snake -> camel
@@ -88,6 +92,7 @@ class Login extends Component {
             <button className={"loginButton"} onClick={this.handlelogin}>
               로그인
             </button>
+            <button onClick={this.signip}>회원가입</button>
           </div>
         </form>
       </div>

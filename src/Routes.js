@@ -6,6 +6,7 @@ import Logout from "./Logout";
 import Navbar from "./Navbar";
 import NotFound from "./Notfound";
 import BoardRead from "./BoardRead";
+import Signup from "./Signup";
 import Events from "./addcal";
 class Routes extends Component {
   render() {
@@ -14,6 +15,7 @@ class Routes extends Component {
         <Switch>
           <Route exact path="/" component={Login} />
           <Route path="/home" component={Oklogin} />
+          <Route exact path="/signup" component={Signup} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/addcalendar" component={Events} />
           <Route path="/boardread" component={BoardRead} />
