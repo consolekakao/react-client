@@ -8,14 +8,15 @@ class Ftp extends Component {
   }
   render() {
     return (
-      <div className={"BoardAll"}>
+      <div className={"FtpFrame"}>
         <form
           action={`http://${Hostinfo.host}:${Hostinfo.port}/upload`}
           encType={"multipart/form-data"}
           method={"post"}
           target={"_blank"}
         >
-          파일 : <input type="file" name="myFile" />
+          파일 :{" "}
+          <input type="file" name="myFile" className={"FtpUploadButton"} />
           <input type="hidden" name={"userid"} value={this.props.userid} />
           <button type="submit">upload</button>
         </form>

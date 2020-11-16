@@ -233,6 +233,21 @@
   left: 400px;
 }
 
+.FtpUploadButton {
+  width: 300px;
+  height: 100px;
+  background-color: #727272;
+}
+
+.FtpFrame {
+  text-align: center;
+  padding: 20px;
+  border-radius: 20px;
+  width: 700px;
+  height: 600px;
+  background-color: white;
+}
+
 .Navbar {
   padding-top: 200px;
   width: 100%;
